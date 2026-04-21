@@ -16,7 +16,8 @@ int main(){
     grafo.agregarAristaPonderada(5, 3, 2);
     grafo.mostrarGrafo();
     grafo.Dijkstra(1);
-    grafo.BellmanFord(1);
+    grafo.BellmanFord(1);//Encontrar el camino
+    grafo.BellmanFord(5);//Encontrar el camino
     grafo.BFS(1);
     return 0;
 }
