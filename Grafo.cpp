@@ -27,11 +27,16 @@ void Grafo::conectar(int valor1, int valor2, int peso){
         nodo2->agregarAdyacente(nodo1, peso);
     }
 }
+
+void Grafo::agregarAristaPonderada(int valor1, int valor2, int peso) {
+    conectar(valor1, valor2, peso);
+}
 void Grafo::mostrarGrafo() const{
     for(Nodo* nodo: nodos){
-        cout<< "Nodo: "<< nodo->getDato() << " Adyacentes: ";
-        for(Nodo* adyacente: nodo->getAdyacentes()){
-            cout<< adyacente->getDato() << " ";
+        cout<< "Nodo "<< nodo->getDato() << " -> ";
+        const map<Nodo*, int>& ady = nodo->getAdyacentesConPeso();
+        for(const auto& par : ady){
+            cout << par.first->getDato() << "(" << par.second << ") ";
         }
         cout<< endl;
     }
