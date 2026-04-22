@@ -233,7 +233,7 @@ void Grafo::Dijkstra(int origen) const {
  * 
  * Este algoritmo es similar a Dijkstra pero puede manejar pesos negativos.
  * Funciona relajando todas las aristas V-1 veces, donde V es el número de nodos.
- * También detecta ciclos negativos reachable desde el origen.
+ * También detecta ciclos negativos partiendo del origen.
  */
 void Grafo::BellmanFord(int origen) const {
     // Paso 1: verificar nodo inicial
@@ -279,8 +279,7 @@ void Grafo::BellmanFord(int origen) const {
                 int v = vecino->getDato();
 
                 // Si hay un camino mejor a través de u, actualizar
-                if (distancia[u] != numeric_limits<int>::max() &&
-                    distancia[u] + peso < distancia[v]) {
+                if (distancia[u] != numeric_limits<int>::max() && distancia[u] + peso < distancia[v]) {
                     distancia[v] = distancia[u] + peso;
                     predecessor[v] = u;
                 }
@@ -312,11 +311,11 @@ void Grafo::BellmanFord(int origen) const {
     }
 
     // Paso 6: mostrar resultados
-    cout << "\n--- Algoritmo de Bellman-Ford ---" << endl;
+    cout << "\nAlgoritmo de Bellman-Ford " << endl;
     cout << "Desde el nodo " << origen << ":\n" << endl;
     
     if (hayCicloNegativo) {
-        cout << "ADVERTENCIA: Se detecto un ciclo de peso negativo!" << endl;
+        cout << "Se detecto un ciclo de peso negativo!" << endl;
         cout << "Los resultados pueden no ser validos.\n" << endl;
     }
 
